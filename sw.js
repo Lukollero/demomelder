@@ -1,6 +1,6 @@
 // Demomelder Service Worker — network-first, damit die Termine immer frisch sind,
 // mit Cache-Fallback für Offline-Nutzung.
-const CACHE = "demomelder-v1";
+const CACHE = "demomelder-v2";
 const SHELL = [
   "./", "./index.html", "./demos.js", "./manifest.webmanifest",
   "./icon.svg", "./icon-192.png", "./apple-touch-icon.png",
@@ -24,7 +24,7 @@ self.addEventListener("fetch", (e) => {
   if (req.method !== "GET" || new URL(req.url).origin !== self.location.origin) return;
   e.respondWith((async () => {
     try {
-      const res = await fetch(req);
+      const res = await fetch(req.url, { cache: "no-store" });   // HTTP-Cache des Browsers umgehen: immer frisch
       const c = await caches.open(CACHE);
       c.put(req, res.clone()).catch(() => {});
       return res;
