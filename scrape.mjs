@@ -303,6 +303,28 @@ function parsePruef(html) {
 }
 
 // ===========================================================================
+// QUELLE 6 — Fridays for Future (Streiktermine, strukturierte Karten-Popups)
+// ===========================================================================
+function parseFff(html) {
+  const out = [];
+  const re = /bindPopup\('<b>([^<]+)<\/b><\/br>(\d{2})\.(\d{2})\.(\d{4})<br>(\d{1,2}):(\d{2})\s*Uhr<br>([^<]*)/g;
+  let m;
+  while ((m = re.exec(html))) {
+    const [, stadt, dd, mm, yyyy, H, M, ort] = m;
+    if (!/^\s*stuttgart\s*$/i.test(stadt)) continue;          // nur Stuttgart-Stadt, kein Umland
+    const datum = `${yyyy}-${mm}-${dd}`;
+    if (datum < HEUTE) continue;
+    out.push({
+      titel: "Klimastreik (Fridays for Future)", datum, zeit: `${H.padStart(2, "0")}:${M}`, endeZeit: null,
+      ort: (ort || "").trim() || "Stuttgart", beschreibung: null,
+      url: "https://fridaysforfuture.de/streiktermine/", kategorien: [],
+      quelle: "Fridays for Future", spektrum: "links / zivilgesellschaftlich",
+    });
+  }
+  return out;
+}
+
+// ===========================================================================
 // Orchestrierung
 // ===========================================================================
 const QUELLEN = [
@@ -310,6 +332,7 @@ const QUELLEN = [
   { key: "friedenskoop", name: "Friedenskooperative", url: "https://www.friedenskooperative.de/termine", parse: parseFriedenskoop },
   { key: "demokrateam", name: "DemokraTEAM", url: "https://www.demokrateam.org/aktionskarte/", parse: parseDemokrateam },
   { key: "pruef", name: "PRÜF (demokrateam)", url: "https://www.demokrateam.org/aktionen/pruef-baden-wuerttemberg/", parse: parsePruef },
+  { key: "fff", name: "Fridays for Future", url: "https://fridaysforfuture.de/streiktermine/", parse: parseFff },
   { key: "montagsdemo", name: "Montagsdemo (Parkschützer)", url: "https://www.bei-abriss-aufstand.de/", parse: parseMontagsdemo },
 ];
 
@@ -369,6 +392,33 @@ async function main() {
       status.push({ key: q.key, name: q.name, ok: false, count: 0, ms: Date.now() - t0, error: String(err.message || err) });
       console.log(`✗ ${q.name.padEnd(26)} FEHLER: ${err.message || err}`);
     }
+  }
+
+  // Manuell kuratierte Einträge (für Termine, die nirgends maschinenlesbar stehen)
+  try {
+    const mp = join(DIR, "manuell.json");
+    if (existsSync(mp)) {
+      const arr = JSON.parse(readFileSync(mp, "utf8"));
+      let n = 0;
+      for (const e of (Array.isArray(arr) ? arr : [])) {
+        if (!e || !e.titel || !/^\d{4}-\d{2}-\d{2}$/.test(e.datum || "")) continue;
+        if (e.datum < HEUTE) continue;
+        alle.push({
+          titel: String(e.titel).trim(), datum: e.datum,
+          zeit: /^\d{1,2}:\d{2}$/.test(e.zeit || "") ? e.zeit : null,
+          endeZeit: /^\d{1,2}:\d{2}$/.test(e.endeZeit || "") ? e.endeZeit : null,
+          ort: e.ort ? String(e.ort) : null, beschreibung: e.beschreibung ? String(e.beschreibung) : null,
+          url: e.url ? String(e.url) : null, kategorien: [],
+          quelle: e.quelle ? String(e.quelle) : "Eingetragen",
+          spektrum: e.spektrum || "links / zivilgesellschaftlich",
+        });
+        n++;
+      }
+      status.push({ key: "manuell", name: "Eingetragen (manuell)", ok: true, count: n, ms: 0, error: null });
+      console.log(`✓ ${"Eingetragen (manuell)".padEnd(26)} ${String(n).padStart(3)} Termine`);
+    }
+  } catch (err) {
+    console.log(`✗ manuell.json konnte nicht gelesen werden: ${err.message || err}`);
   }
 
   // Ort-Feld säubern (Quelldaten haben teils Leerzeichen vor dem Komma)

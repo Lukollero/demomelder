@@ -41,13 +41,41 @@ lokal erzeugte `demos.js`. Kein Server, kein Internet zum Anzeigen nötig
 
 | Quelle | Spektrum | Was sie liefert |
 |---|---|---|
-| **eintopf.info** | links / zivilgesellschaftlich | Haupt­quelle; Demos, Kundgebungen, Kidical/Critical Mass, CSD u. v. m. (ICS-Feed, Kategorie „Demonstration") |
+| **eintopf.info** | links / zivilgesellschaftlich | Haupt­quelle; Demos, Kundgebungen, Kidical Mass, CSD u. v. m. (ICS-Feed, Kategorie „Demonstration") |
 | **DemokraTEAM** | gegen rechts | Aktionen „gegen rechts / AfD" im Stuttgarter Umkreis (Aktionskarte, Geo-Filter) |
+| **PRÜF** | gegen rechts | Nächste PRÜF-Kundgebung (via demokrateam JSON-LD, rollt automatisch weiter) |
+| **Fridays for Future** | links / zivilgesellschaftlich | Klimastreik-Termine mit Ort Stuttgart (Streiktermin-Karte; nur wenn ein künftiger Termin gesetzt ist) |
 | **Friedenskooperative** | Friedensbewegung | Friedens-/Abrüstungstermine mit Ort Stuttgart |
 | **Montagsdemo (Parkschützer)** | Stuttgart 21 | Wöchentliche Montagsdemo, Schlossplatz, 18 Uhr (fortlaufend nummeriert) |
+| **Eingetragen (manuell)** | frei wählbar | Von Hand gepflegte Termine aus `manuell.json` (siehe unten) |
 
 Dieselbe Demo aus zwei Quellen wird automatisch zusammengeführt und zeigt beide
 Herkünfte als Bestätigung an.
+
+### Demos von Hand eintragen (`manuell.json`)
+
+Viele Termine (v. a. von Bündnissen) stehen nur auf Instagram oder als Fließtext
+und sind nicht maschinenlesbar. Solche Termine trägst du selbst in `manuell.json`
+ein, der Scraper nimmt sie automatisch mit. Format pro Eintrag:
+
+```json
+{
+  "titel": "Kundgebung gegen …",
+  "datum": "2026-08-15",
+  "zeit": "14:00",
+  "ort": "Schlossplatz, Stuttgart",
+  "url": "https://…",
+  "spektrum": "gegen rechts",
+  "beschreibung": "optional"
+}
+```
+
+- `spektrum` ist eines von: `links / zivilgesellschaftlich`, `gegen rechts`,
+  `Friedensbewegung`, `Stuttgart 21`.
+- `zeit`, `url`, `beschreibung` sind optional; `titel` und `datum` (YYYY-MM-DD) Pflicht.
+- Vergangene Termine werden automatisch ausgeblendet, du musst also nichts aufräumen.
+- Bearbeiten am einfachsten direkt auf GitHub (Datei `manuell.json` → Stift-Symbol),
+  der nächste automatische Lauf übernimmt den Eintrag.
 
 ## Was bewusst NICHT passiert (Datenschutz)
 

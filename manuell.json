@@ -1,0 +1,11 @@
+[
+  {
+    "titel": "Beispiel: So trägst du eine Demo ein (wird nicht angezeigt)",
+    "datum": "2000-01-01",
+    "zeit": "18:00",
+    "ort": "Schlossplatz, Stuttgart",
+    "url": "https://beispiel.de",
+    "spektrum": "gegen rechts",
+    "beschreibung": "Diesen Block kopieren, Felder anpassen, weitere durch Komma getrennt anhängen. Vergangene Termine (wie dieser mit Datum 2000-01-01) werden automatisch ausgeblendet."
+  }
+]
