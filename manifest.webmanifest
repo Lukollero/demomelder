@@ -1,0 +1,17 @@
+{
+  "name": "Demomelder Stuttgart",
+  "short_name": "Demos Stuttgart",
+  "description": "Kommende Demonstrationen, Kundgebungen und Aktionen in Stuttgart, aus mehreren Quellen zusammengetragen.",
+  "lang": "de",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f3f3f0",
+  "theme_color": "#f3f3f0",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Demomelder">
+  <rect width="512" height="512" fill="#fb4b14"/>
+  <g transform="translate(256 256) rotate(-8) scale(0.84) translate(-256 -262)">
+    <path fill="#161311"
+      d="M150 220 Q140 220 140 232 L140 280 Q140 292 150 294 L214 310 L214 348 Q214 366 232 366 L246 366 Q264 366 264 348 L264 322 L338 342 Q352 346 352 331 L352 181 Q352 166 338 170 L150 220 Z"/>
+    <g fill="none" stroke="#161311" stroke-width="20" stroke-linecap="round">
+      <path d="M380 212 Q414 256 380 300"/>
+      <path d="M412 188 Q462 256 412 324"/>
+    </g>
+  </g>
+</svg>

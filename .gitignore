@@ -8,6 +8,8 @@ skills-lock.json
 
 # Interne Wegwerf-/Arbeitsdateien
 mockup-ab.html
+icon-render.html
+.playwright-mcp/
 
 # Node
 node_modules/

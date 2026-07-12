@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Demomelder Stuttgart</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#f3f3f0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141311" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Demos Stuttgart">
 <style>
   /* Display-Grotesk offline eingebettet (Archivo Black, OFL) */
   @font-face{
@@ -168,6 +177,54 @@
     .item{grid-template-columns:76px 1fr; gap:14px}
     .tools{top:0}
   }
+  /* ---------------- Aktions-Buttons pro Termin ---------------- */
+  .actions{display:flex; gap:8px; margin-top:12px; flex-wrap:wrap}
+  .act{font-family:var(--body); font-size:12px; font-weight:700; letter-spacing:.02em; color:var(--ink);
+    background:transparent; border:2px solid var(--rule); padding:6px 13px; cursor:pointer;
+    transition:background-color 140ms var(--ease-out), color 140ms var(--ease-out), transform 120ms var(--ease-out)}
+  .act:active{transform:scale(.96)}
+  .act:focus-visible{outline:3px solid var(--signal); outline-offset:2px}
+
+  @media (prefers-reduced-motion:no-preference){
+    .item.flash{animation:itemflash 1.9s var(--ease-out) both}
+    @keyframes itemflash{0%,12%{background:color-mix(in srgb,var(--signal) 20%,transparent)}100%{background:transparent}}
+  }
+
+  /* ---------------- Bottom-Sheets (Onboarding / Teilen) ---------------- */
+  .sheet-backdrop{position:fixed; inset:0; z-index:100; background:rgba(20,19,17,.55);
+    display:flex; align-items:flex-end; justify-content:center; opacity:0; transition:opacity 220ms var(--ease-out)}
+  .sheet-backdrop.open{opacity:1}
+  .sheet{background:var(--paper); color:var(--ink); width:100%; max-width:520px; border:2px solid var(--rule); border-bottom:0;
+    padding:28px 24px 34px; position:relative; max-height:88vh; overflow-y:auto;
+    transform:translateY(100%); transition:transform 340ms cubic-bezier(.32,.72,0,1)}
+  .sheet-backdrop.open .sheet{transform:none}
+  @media (min-width:560px){ .sheet-backdrop{align-items:center} .sheet{border-bottom:2px solid var(--rule); transform:translateY(20px)} }
+  @media (prefers-reduced-motion:reduce){ .sheet{transition:none; transform:none} }
+  .sheet-x{position:absolute; top:12px; right:12px; border:0; background:transparent; font-size:28px; line-height:1;
+    color:var(--ink-soft); cursor:pointer; width:42px; height:42px}
+  .sheet-x:focus-visible{outline:3px solid var(--signal); outline-offset:2px}
+  .sheet-h{font-family:var(--disp); font-weight:400; text-transform:uppercase; letter-spacing:-.01em; font-size:27px; margin:0 34px 12px 0}
+  .sheet-p{color:var(--ink-soft); font-size:15px; line-height:1.55; margin:0 0 20px; max-width:44ch}
+  .ob-step{display:grid; grid-template-columns:26px 1fr; gap:12px; align-items:start; font-size:15px; line-height:1.5; color:var(--ink); margin:0 0 14px}
+  .ob-step b{color:var(--signal); font-family:var(--disp); font-weight:400}
+  .sheet-btn{width:100%; margin-top:10px; padding:14px; border:2px solid var(--rule); background:transparent; color:var(--ink);
+    font-family:var(--body); font-weight:800; font-size:15px; letter-spacing:.01em; cursor:pointer;
+    transition:background-color 140ms var(--ease-out), color 140ms var(--ease-out), transform 120ms var(--ease-out)}
+  .sheet-btn.primary{background:var(--signal); border-color:var(--signal); color:#111}
+  .sheet-btn:active{transform:scale(.985)}
+  .sheet-btn:focus-visible{outline:3px solid var(--signal); outline-offset:2px}
+  .sh-preview{width:100%; aspect-ratio:4/5; object-fit:cover; border:2px solid var(--rule); display:block; margin:0 0 18px; background:var(--line)}
+  .sh-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .sh-grid .sheet-btn{margin-top:0}
+  .install-link{background:none; border:0; color:var(--ink-soft); font-family:var(--body); font-size:12.5px; font-weight:700;
+    text-decoration:underline; text-underline-offset:3px; cursor:pointer; padding:0}
+
+  @media (hover:hover) and (pointer:fine){
+    .act:hover{background:var(--ink); color:var(--paper)}
+    .sheet-btn:hover{background:var(--ink); color:var(--paper)}
+    .sheet-btn.primary:hover{background:#111; color:#fff; border-color:#111}
+    .install-link:hover{color:var(--signal)}
+  }
 </style>
 </head>
 <body>
@@ -209,6 +266,8 @@
   const D = window.DEMOS;
   const list = document.getElementById("list");
   const esc = s => (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const slug = d => { const s = d.quelle + "|" + d.datum + "|" + d.titel; let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0; return h.toString(36); };
+  window.__slug = slug;
 
   if(!D || !Array.isArray(D.demos)){
     document.getElementById("count").textContent = "0";
@@ -223,7 +282,7 @@
   const dObj = s => new Date(s + "T12:00:00");
   const kurz = s => (s||"").split(" / ")[0];
   const rel = d => { const n = Math.round((dObj(d)-dObj(heute))/864e5); return n===0?"heute":n===1?"morgen":(n>1&&n<=7)?("in "+n+" Tagen"):""; };
-  const maps = ort => "https://www.openstreetmap.org/search?query=" + encodeURIComponent(ort + ", Stuttgart");
+  const maps = ort => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(ort + ", Stuttgart");
 
   const spektren = [...new Set(D.demos.map(d => d.spektrum))];
   const state = { q:"", range:"all", aktiv:new Set(spektren) };
@@ -272,7 +331,9 @@
     const src = d.url
       ? `<p class="src"><a class="event-link" href="${esc(d.url)}" target="_blank" rel="noopener">Zur Veranstaltung ↗</a> · Quelle: ${esc(d.quelle)}${auch}</p>`
       : `<p class="src">Quelle: ${esc(d.quelle)}${auch}</p>`;
-    return `<article class="item">${time}<div><h3 class="title">${titel}</h3>${where}<div class="badges">${tags(d)}</div>${src}</div></article>`;
+    const sl = slug(d);
+    const actions = `<div class="actions"><button class="act" type="button" data-act="cal" data-slug="${sl}" title="Als Kalendertermin mit Erinnerung speichern">Kalender</button><button class="act" type="button" data-act="share" data-slug="${sl}" title="Teilen oder Freunde fragen">Teilen</button></div>`;
+    return `<article class="item" id="d-${sl}" data-slug="${sl}">${time}<div><h3 class="title">${titel}</h3>${where}<div class="badges">${tags(d)}</div>${src}${actions}</div></article>`;
   }
 
   function render(animate){
@@ -339,6 +400,147 @@
   new IntersectionObserver(([e]) => toolsEl.classList.toggle("stuck", !e.isIntersecting), { threshold: 1 }).observe(sentinel);
 
   render(true);
+})();
+</script>
+  <div id="ob" class="sheet-backdrop" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="ob-t">
+      <button class="sheet-x" type="button" data-close="ob" aria-label="Schließen">×</button>
+      <h2 id="ob-t" class="sheet-h">Aufs Handy legen</h2>
+      <p class="sheet-p">Ein Tipp aufs Icon, und du hast die nächsten Demos in Stuttgart sofort parat. Wie eine App, ohne Browser-Suchen, auch offline lesbar.</p>
+      <div id="ob-how"></div>
+      <button class="sheet-btn" type="button" data-close="ob">Später</button>
+    </div>
+  </div>
+
+  <div id="sh" class="sheet-backdrop" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">
+      <button class="sheet-x" type="button" data-close="sh" aria-label="Schließen">×</button>
+      <h2 id="sh-t" class="sheet-h">Demo teilen</h2>
+      <img id="sh-preview" class="sh-preview" alt="Vorschau des Sharepics">
+      <div id="sh-actions"></div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const D = window.DEMOS; if(!D || !window.__slug) return;
+  const slug = window.__slug;
+  const bySlug = {}; for(const d of D.demos) bySlug[slug(d)] = d;
+  const WTL = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
+  const MON = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+  const dObj = s => new Date(s+"T12:00:00");
+  const fmtDate = dt => { const d=dObj(dt); return WTL[d.getDay()]+", "+d.getDate()+". "+MON[d.getMonth()]; };
+  const pageUrl = location.origin + location.pathname;
+  const linkFor = d => pageUrl + "?demo=" + slug(d);
+
+  function openSheet(id){ const el=document.getElementById(id); el.hidden=false; requestAnimationFrame(()=>el.classList.add("open")); }
+  function closeSheet(id){ const el=document.getElementById(id); if(!el) return; el.classList.remove("open"); setTimeout(()=>{ el.hidden=true; }, 340); if(id==="ob") localStorage.setItem("ob-done","1"); }
+  document.addEventListener("click", e=>{
+    const c=e.target.closest("[data-close]"); if(c){ closeSheet(c.dataset.close); return; }
+    if(e.target.classList && e.target.classList.contains("sheet-backdrop")) closeSheet(e.target.id);
+  });
+  document.addEventListener("keydown", e=>{ if(e.key==="Escape") document.querySelectorAll(".sheet-backdrop.open").forEach(el=>closeSheet(el.id)); });
+
+  // ---- Kalender (.ics mit Erinnerung: 1 Tag + 2 Std. vorher) ----
+  function icsEsc(s){ return (s||"").replace(/\\/g,"\\\\").replace(/[,;]/g,m=>"\\"+m).replace(/\r?\n/g,"\\n"); }
+  const pad = n => String(n).padStart(2,"0");
+  function stampUTC(){ const d=new Date(); return ""+d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+"T"+pad(d.getUTCHours())+pad(d.getUTCMinutes())+pad(d.getUTCSeconds())+"Z"; }
+  function addHours(hm,h){ const [H,M]=hm.split(":").map(Number); let t=((H*60+M+h*60)%1440+1440)%1440; return pad(Math.floor(t/60))+pad(t%60); }
+  function downloadIcs(d){
+    const dt=d.datum.replace(/-/g,""); let start,end,allday=false;
+    if(d.zeit){ const z=d.zeit.replace(":",""); start="DTSTART:"+dt+"T"+z+"00"; const e=d.endeZeit?d.endeZeit.replace(":",""):addHours(d.zeit,2); end="DTEND:"+dt+"T"+e+"00"; }
+    else { allday=true; const nx=dObj(d.datum); nx.setDate(nx.getDate()+1); start="DTSTART;VALUE=DATE:"+dt; end="DTEND;VALUE=DATE:"+nx.getFullYear()+pad(nx.getMonth()+1)+pad(nx.getDate()); }
+    const desc=(d.beschreibung?d.beschreibung+"\\n\\n":"")+"Quelle: "+d.quelle+(d.url?"\\n"+d.url:"")+"\\n\\nOhne Gewähr, an der Quelle prüfen. Via Demomelder Stuttgart.";
+    const L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Demomelder Stuttgart//DE","CALSCALE:GREGORIAN","METHOD:PUBLISH",
+      "BEGIN:VEVENT","UID:"+slug(d)+"@demomelder","DTSTAMP:"+stampUTC(),start,end,
+      "SUMMARY:"+icsEsc(d.titel), d.ort?"LOCATION:"+icsEsc(d.ort):null, d.url?"URL:"+d.url:null, "DESCRIPTION:"+desc,
+      "BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:"+icsEsc("Morgen: "+d.titel),"TRIGGER:-P1D","END:VALARM",
+      allday?null:"BEGIN:VALARM",allday?null:"ACTION:DISPLAY",allday?null:"DESCRIPTION:"+icsEsc(d.titel+" beginnt bald"),allday?null:"TRIGGER:-PT2H",allday?null:"END:VALARM",
+      "END:VEVENT","END:VCALENDAR"].filter(x=>x!==null);
+    const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([L.join("\r\n")],{type:"text/calendar;charset=utf-8"}));
+    a.download="demo-"+slug(d)+".ics"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  }
+
+  // ---- Sharepic (Canvas, Signal-Plakat) ----
+  const SPEK_COL={"links / zivilgesellschaftlich":"#6338d6","Friedensbewegung":"#0a7a68","gegen rechts":"#c81a6f","Stuttgart 21":"#1f5fd0"};
+  function wrap(ctx,text,maxW){ const ws=text.split(/\s+/),out=[]; let ln=""; for(const w of ws){ const t=ln?ln+" "+w:w; if(ctx.measureText(t).width>maxW&&ln){out.push(ln);ln=w;}else ln=t; } if(ln)out.push(ln); return out; }
+  async function makePoster(d){
+    const W=1080,H=1350,P=88; const c=document.createElement("canvas"); c.width=W;c.height=H; const x=c.getContext("2d");
+    try{ await document.fonts.load("400 96px 'Demo Display'"); await document.fonts.ready; }catch(e){}
+    const disp=s=>"400 "+s+"px 'Demo Display','Arial Black',sans-serif";
+    const sans=(w,s)=>w+" "+s+"px -apple-system,Arial,sans-serif";
+    x.fillStyle="#f3f3f0"; x.fillRect(0,0,W,H); x.textBaseline="alphabetic";
+    x.fillStyle="#161311"; x.font=disp(44); x.fillText("DEMOS",P,P+40);
+    const dw=x.measureText("DEMOS ").width, stw=x.measureText("STUTTGART").width;
+    x.fillStyle="#fb4b14"; x.fillRect(P+dw,P+2,stw+22,52); x.fillStyle="#161311"; x.fillText("STUTTGART",P+dw+11,P+40);
+    x.fillRect(P,P+78,W-2*P,6);
+    let y=P+206; x.fillStyle="#fb4b14"; x.font=disp(52); x.fillText(fmtDate(d.datum).toUpperCase(),P,y);
+    y+=56; x.fillStyle="#4b4a45"; x.font=sans(600,33);
+    const zo=(d.zeit?d.zeit+" Uhr":"ganztägig")+(d.ort?"   "+d.ort:""); x.fillText(zo.length>52?zo.slice(0,51)+"…":zo,P,y);
+    const ts=d.titel.length>46?70:(d.titel.length>26?84:96); x.font=disp(ts); x.fillStyle="#161311";
+    const lines=wrap(x,d.titel.toUpperCase(),W-2*P).slice(0,4); y+=94; for(const ln of lines){ x.fillText(ln,P,y); y+=ts*1.02; }
+    y+=16; const lab=d.spektrum.split(" / ")[0].toUpperCase(); x.font=sans(800,26);
+    const lw=x.measureText(lab).width; x.fillStyle=SPEK_COL[d.spektrum]||"#6b7280"; x.fillRect(P,y,lw+34,46);
+    x.fillStyle="#fff"; x.fillText(lab,P+17,y+31);
+    x.fillStyle="#161311"; x.font=disp(46); x.fillText("KOMMST DU MIT?",P,H-140);
+    x.fillStyle="#78766e"; x.font=sans(600,25); x.fillText("lukollero.github.io/demomelder  ·  ohne Gewähr, nicht amtlich",P,H-92);
+    return await new Promise(res=>c.toBlob(res,"image/png",0.95));
+  }
+
+  // ---- Teilen ----
+  let lastUrl=null;
+  async function openShare(d){
+    const link=linkFor(d);
+    const txt=d.titel+"\n"+fmtDate(d.datum)+(d.zeit?" um "+d.zeit+" Uhr":"")+(d.ort?"\n"+d.ort:"")+"\n\nKommst du mit?";
+    const box=document.getElementById("sh-actions");
+    box.innerHTML='<div class="sh-grid"><button class="sheet-btn primary" data-s="native">Teilen …</button><button class="sheet-btn" data-s="wa">WhatsApp</button><button class="sheet-btn" data-s="img">Bild speichern</button><button class="sheet-btn" data-s="copy">Link kopieren</button></div>';
+    const preview=document.getElementById("sh-preview"); preview.removeAttribute("src"); openSheet("sh");
+    let blob=null,file=null;
+    try{ blob=await makePoster(d); if(lastUrl)URL.revokeObjectURL(lastUrl); lastUrl=URL.createObjectURL(blob); preview.src=lastUrl; file=new File([blob],"demo.png",{type:"image/png"}); }catch(e){}
+    box.onclick=async ev=>{
+      const b=ev.target.closest("button[data-s]"); if(!b) return; const s=b.dataset.s;
+      if(s==="native"){ try{
+        if(file&&navigator.canShare&&navigator.canShare({files:[file]})) await navigator.share({files:[file],text:txt+"\n"+link});
+        else if(navigator.share) await navigator.share({title:d.titel,text:txt,url:link});
+        else { await navigator.clipboard.writeText(txt+"\n"+link); b.textContent="Kopiert ✓"; }
+      }catch(e){} }
+      else if(s==="wa") window.open("https://wa.me/?text="+encodeURIComponent(txt+"\n"+link),"_blank");
+      else if(s==="img"){ if(lastUrl){ const a=document.createElement("a"); a.href=lastUrl; a.download="demo.png"; a.click(); } }
+      else if(s==="copy"){ try{ await navigator.clipboard.writeText(txt+"\n"+link); b.textContent="Kopiert ✓"; setTimeout(()=>b.textContent="Link kopieren",1500); }catch(e){} }
+    };
+  }
+
+  // ---- Aktions-Buttons ----
+  document.getElementById("list").addEventListener("click", e=>{
+    const b=e.target.closest(".act"); if(!b) return; const d=bySlug[b.dataset.slug]; if(!d) return;
+    if(b.dataset.act==="cal") downloadIcs(d); else if(b.dataset.act==="share") openShare(d);
+  });
+
+  // ---- Deep-Link ----
+  const dl=new URLSearchParams(location.search).get("demo");
+  if(dl){ const el=document.getElementById("d-"+dl); if(el) setTimeout(()=>{ el.scrollIntoView({block:"center",behavior:"smooth"}); el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),2000); },300); }
+
+  // ---- Onboarding / Installation ----
+  let deferred=null;
+  window.addEventListener("beforeinstallprompt", e=>{ e.preventDefault(); deferred=e; });
+  const standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+  const isiOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  function fillOb(){
+    const how=document.getElementById("ob-how");
+    if(deferred){ how.innerHTML='<button class="sheet-btn primary" id="ob-install">Jetzt installieren</button>';
+      document.getElementById("ob-install").onclick=async()=>{ deferred.prompt(); try{await deferred.userChoice;}catch(e){} deferred=null; closeSheet("ob"); }; }
+    else if(isiOS){ how.innerHTML='<div class="ob-step"><b>1</b><span>Tippe unten in Safari auf das <b>Teilen</b>-Symbol (Quadrat mit Pfeil nach oben).</span></div><div class="ob-step"><b>2</b><span>Wähle <b>„Zum Home-Bildschirm"</b> und bestätige.</span></div>'; }
+    else { how.innerHTML='<div class="ob-step"><b>›</b><span>Öffne das Browser-Menü (⋮) und wähle <b>„App installieren"</b> bzw. <b>„Zum Startbildschirm hinzufügen"</b>.</span></div>'; }
+  }
+  function showOb(force){ if(standalone) return; if(!force&&localStorage.getItem("ob-done")) return; fillOb(); openSheet("ob"); }
+  if(!standalone&&!localStorage.getItem("ob-done")) setTimeout(()=>showOb(false),1100);
+  const foot=document.getElementById("footer");
+  if(foot&&!standalone){ const p=document.createElement("p"); p.style.marginTop="10px";
+    p.innerHTML='<button class="install-link" id="ob-open" type="button">Diese Übersicht als App aufs Handy legen</button>';
+    foot.appendChild(p); document.getElementById("ob-open").onclick=()=>showOb(true); }
+
+  // ---- Service Worker ----
+  if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
 })();
 </script>
 </body>
