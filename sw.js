@@ -1,36 +1,17 @@
-// Demomelder Service Worker — network-first, damit die Termine immer frisch sind,
-// mit Cache-Fallback für Offline-Nutzung.
-const CACHE = "demomelder-v3";
-const SHELL = [
-  "./", "./index.html", "./demos.js", "./manifest.webmanifest",
-  "./icon-192.png", "./apple-touch-icon.png",
-];
-
-self.addEventListener("install", (e) => {
-  self.skipWaiting();
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL).catch(() => {})));
-});
-
+// KILL-SWITCH.
+// Die früheren SW-Versionen lieferten hartnäckig veraltete Inhalte aus.
+// Dieser Service Worker deregistriert sich selbst, leert alle Caches und lädt
+// offene Seiten neu. Danach gibt es keinen Service Worker mehr, und die Seite
+// lädt wieder normal (immer frisch) direkt von GitHub Pages.
+self.addEventListener("install", () => self.skipWaiting());
 self.addEventListener("activate", (e) => {
   e.waitUntil((async () => {
-    const keys = await caches.keys();
-    await Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)));
-    await self.clients.claim();
-  })());
-});
-
-self.addEventListener("fetch", (e) => {
-  const req = e.request;
-  if (req.method !== "GET" || new URL(req.url).origin !== self.location.origin) return;
-  e.respondWith((async () => {
     try {
-      const res = await fetch(req.url, { cache: "no-store" });   // HTTP-Cache des Browsers umgehen: immer frisch
-      const c = await caches.open(CACHE);
-      c.put(req, res.clone()).catch(() => {});
-      return res;
-    } catch {
-      const cached = await caches.match(req);
-      return cached || caches.match("./index.html");
-    }
+      const keys = await caches.keys();
+      await Promise.all(keys.map((k) => caches.delete(k)));
+      await self.registration.unregister();
+      const clients = await self.clients.matchAll({ type: "window" });
+      for (const c of clients) c.navigate(c.url);
+    } catch (err) {}
   })());
 });

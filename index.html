@@ -549,13 +549,11 @@
     p.innerHTML='<button class="install-link" id="ob-open" type="button">Diese Übersicht als App aufs Handy legen</button>';
     foot.appendChild(p); document.getElementById("ob-open").onclick=()=>showOb(true); }
 
-  // ---- Service Worker ----
+  // ---- Service Worker entfernen (verursachte hartnäckig veraltete Caches) ----
   if("serviceWorker" in navigator){
-    const hadCtrl = !!navigator.serviceWorker.controller;
-    let reloaded=false;
-    navigator.serviceWorker.addEventListener("controllerchange", ()=>{ if(reloaded) return; reloaded=true; if(hadCtrl && !document.querySelector(".sheet-backdrop.open")) location.reload(); });
-    navigator.serviceWorker.register("sw.js").catch(()=>{});
+    navigator.serviceWorker.getRegistrations().then(rs => { for(const r of rs) r.unregister(); }).catch(()=>{});
   }
+  if(window.caches){ caches.keys().then(ks => { for(const k of ks) caches.delete(k); }).catch(()=>{}); }
 })();
 </script>
 </body>
