@@ -26,7 +26,7 @@ jobs:
       - name: Node einrichten
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
 
       - name: Termine sammeln
         run: node scrape.mjs

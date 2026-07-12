@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T18:06:39.426Z",
+  "generatedAt": "2026-07-12T18:05:51.869Z",
   "heute": "2026-07-12",
   "quellen": [
     {
@@ -7,7 +7,7 @@
       "name": "eintopf.info",
       "ok": true,
       "count": 12,
-      "ms": 4485,
+      "ms": 4670,
       "error": null
     },
     {
@@ -15,7 +15,7 @@
       "name": "Friedenskooperative",
       "ok": true,
       "count": 2,
-      "ms": 5093,
+      "ms": 3567,
       "error": null
     },
     {
@@ -23,7 +23,15 @@
       "name": "DemokraTEAM",
       "ok": true,
       "count": 5,
-      "ms": 809,
+      "ms": 208,
+      "error": null
+    },
+    {
+      "key": "pruef",
+      "name": "PRÜF (demokrateam)",
+      "ok": true,
+      "count": 1,
+      "ms": 27,
       "error": null
     },
     {
@@ -31,11 +39,11 @@
       "name": "Montagsdemo (Parkschützer)",
       "ok": true,
       "count": 8,
-      "ms": 849,
+      "ms": 403,
       "error": null
     }
   ],
-  "anzahl": 26,
+  "anzahl": 27,
   "demos": [
     {
       "titel": "Kidical Mass Vaihingen",
@@ -300,6 +308,20 @@
       "id": "Montagsdemo (Parkschützer)-2026-08-03-16"
     },
     {
+      "titel": "PRÜF Baden-Württemberg",
+      "datum": "2026-08-08",
+      "zeit": "12:00",
+      "endeZeit": null,
+      "ort": "Stuttgart, Oberer Schlossgarten",
+      "beschreibung": null,
+      "url": "https://www.demokrateam.org/aktionen/pruef-baden-wuerttemberg/",
+      "kategorien": [],
+      "quelle": "PRÜF (demokrateam)",
+      "spektrum": "gegen rechts",
+      "weitereQuellen": [],
+      "id": "PRÜF (demokrateam)-2026-08-08-17"
+    },
+    {
       "titel": "817. Montagsdemo gegen Stuttgart 21",
       "datum": "2026-08-10",
       "zeit": "18:00",
@@ -311,7 +333,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-08-10-17"
+      "id": "Montagsdemo (Parkschützer)-2026-08-10-18"
     },
     {
       "titel": "818. Montagsdemo gegen Stuttgart 21",
@@ -325,7 +347,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-08-17-18"
+      "id": "Montagsdemo (Parkschützer)-2026-08-17-19"
     },
     {
       "titel": "819. Montagsdemo gegen Stuttgart 21",
@@ -339,7 +361,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-08-24-19"
+      "id": "Montagsdemo (Parkschützer)-2026-08-24-20"
     },
     {
       "titel": "820. Montagsdemo gegen Stuttgart 21",
@@ -353,7 +375,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-08-31-20"
+      "id": "Montagsdemo (Parkschützer)-2026-08-31-21"
     },
     {
       "titel": "Kidical Mass Botnang",
@@ -369,7 +391,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-09-20-21"
+      "id": "eintopf.info-2026-09-20-22"
     },
     {
       "titel": "Kidical Mass City",
@@ -385,7 +407,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-09-20-22"
+      "id": "eintopf.info-2026-09-20-23"
     },
     {
       "titel": "Kidical Mass Weilimdorf",
@@ -401,7 +423,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-10-11-23"
+      "id": "eintopf.info-2026-10-11-24"
     },
     {
       "titel": "Kidical Mass Möhringen",
@@ -417,7 +439,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-10-18-24"
+      "id": "eintopf.info-2026-10-18-25"
     },
     {
       "titel": "Kidical Mass Halloween City",
@@ -433,7 +455,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-10-31-25"
+      "id": "eintopf.info-2026-10-31-26"
     }
   ]
 }

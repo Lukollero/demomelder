@@ -15,7 +15,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const DIR = dirname(fileURLToPath(import.meta.url));
-const UA = "Mozilla/5.0 (Demomelder, privat/lokal)";
+const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
 
 // ---------------------------------------------------------------------------
 // Zeit-Helfer (alles auf Europe/Berlin normalisieren)
@@ -36,16 +36,33 @@ const HEUTE = berlinParts(new Date()).datum;
 // ---------------------------------------------------------------------------
 // Netz-Helfer
 // ---------------------------------------------------------------------------
-async function fetchText(url, { timeout = 30000 } = {}) {
-  const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), timeout);
-  try {
-    const res = await fetch(url, { headers: { "User-Agent": UA, "Accept-Language": "de" }, signal: ctrl.signal });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.text();
-  } finally {
-    clearTimeout(t);
+async function fetchText(url, { timeout = 45000, retries = 3 } = {}) {
+  let lastErr;
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), timeout);
+    try {
+      const res = await fetch(url, {
+        headers: {
+          "User-Agent": UA,
+          "Accept": "text/html,application/xhtml+xml,text/calendar,application/rss+xml,application/ld+json,*/*",
+          "Accept-Language": "de,en;q=0.8",
+        },
+        signal: ctrl.signal,
+        redirect: "follow",
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.text();
+    } catch (err) {
+      lastErr = err;
+      if (/^HTTP 4\d\d/.test(err.message || "")) break;           // Client-Fehler: nicht wiederholen
+      if (attempt < retries) await new Promise((r) => setTimeout(r, 1500 * attempt));
+    } finally {
+      clearTimeout(t);
+    }
   }
+  const cause = lastErr && lastErr.cause ? ` (${lastErr.cause.code || lastErr.cause.message || lastErr.cause})` : "";
+  throw new Error(((lastErr && lastErr.message) || "unbekannt") + cause);
 }
 
 // ---------------------------------------------------------------------------
@@ -246,12 +263,53 @@ function parseMontagsdemo(html) {
 }
 
 // ===========================================================================
+// QUELLE 5 — PRÜF (nächste Kundgebung, strukturiert via demokrateam JSON-LD)
+// ===========================================================================
+function parsePruef(html) {
+  const out = [];
+  // Zeit aus der SICHTBAREN MEC-Anzeige nehmen: das JSON-LD-startDate hat bei
+  // diesem Plugin einen systematischen Zeitzonen-Versatz (zeigt 14:00 statt 12:00).
+  const tm = html.match(/mec-start-time[^0-9]{0,6}(\d{1,2}:\d{2})/i);
+  const em = html.match(/mec-end-time[^0-9]{0,6}(\d{1,2}:\d{2})/i);
+  const zeitSichtbar = tm ? tm[1].padStart(5, "0") : null;
+  const endeSichtbar = em ? em[1].padStart(5, "0") : null;
+
+  const blocks = [...html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
+  for (const b of blocks) {
+    let data;
+    try { data = JSON.parse(b[1].trim()); } catch { continue; }
+    const items = Array.isArray(data) ? data : (data["@graph"] || [data]);
+    for (const it of items) {
+      const types = [].concat((it && it["@type"]) || []);
+      if (!types.includes("Event") || typeof it.startDate !== "string") continue;
+      const datum = it.startDate.slice(0, 10);                 // Datum ist zuverlässig
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(datum) || datum < HEUTE) continue;
+      const loc = it.location || {};
+      const ort = loc.name || (loc.address && (loc.address.streetAddress || loc.address.addressLocality)) || "Stuttgart";
+      if (!/stuttgart/i.test(JSON.stringify(loc) + " " + ort)) continue; // nur Stuttgart-Termine
+      out.push({
+        titel: (it.name || "PRÜF-Kundgebung").trim(),
+        datum,
+        zeit: zeitSichtbar,
+        endeZeit: endeSichtbar && endeSichtbar !== zeitSichtbar ? endeSichtbar : null,
+        ort, beschreibung: null,
+        url: (typeof it.url === "string" && it.url) || "https://www.demokrateam.org/aktionen/pruef-baden-wuerttemberg/",
+        kategorien: [],
+        quelle: "PRÜF (demokrateam)", spektrum: "gegen rechts",
+      });
+    }
+  }
+  return out;
+}
+
+// ===========================================================================
 // Orchestrierung
 // ===========================================================================
 const QUELLEN = [
   { key: "eintopf", name: "eintopf.info", url: "https://eintopf.info/ical", parse: parseEintopf },
   { key: "friedenskoop", name: "Friedenskooperative", url: "https://www.friedenskooperative.de/termine", parse: parseFriedenskoop },
   { key: "demokrateam", name: "DemokraTEAM", url: "https://www.demokrateam.org/aktionskarte/", parse: parseDemokrateam },
+  { key: "pruef", name: "PRÜF (demokrateam)", url: "https://www.demokrateam.org/aktionen/pruef-baden-wuerttemberg/", parse: parsePruef },
   { key: "montagsdemo", name: "Montagsdemo (Parkschützer)", url: "https://www.bei-abriss-aufstand.de/", parse: parseMontagsdemo },
 ];
 
