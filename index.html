@@ -191,6 +191,7 @@
   }
 
   /* ---------------- Bottom-Sheets (Onboarding / Teilen) ---------------- */
+  body.modal-open{position:fixed; left:0; right:0; width:100%; overflow:hidden}
   .sheet-backdrop{position:fixed; inset:0; z-index:100; background:rgba(20,19,17,.55);
     display:flex; align-items:flex-end; justify-content:center; opacity:0; transition:opacity 220ms var(--ease-out)}
   .sheet-backdrop.open{opacity:1}
@@ -396,8 +397,9 @@
   // Toolbar bekommt einen Schatten, sobald sie oben klebt (kein Scroll-Listener)
   const toolsEl = document.querySelector(".tools");
   const sentinel = document.createElement("div");
+  sentinel.style.cssText = "height:1px; margin:0; padding:0;";
   toolsEl.parentNode.insertBefore(sentinel, toolsEl);
-  new IntersectionObserver(([e]) => toolsEl.classList.toggle("stuck", !e.isIntersecting), { threshold: 1 }).observe(sentinel);
+  new IntersectionObserver(([e]) => toolsEl.classList.toggle("stuck", !e.isIntersecting), { threshold: 0 }).observe(sentinel);
 
   render(true);
 })();
@@ -433,12 +435,14 @@
   const pageUrl = location.origin + location.pathname;
   const linkFor = d => pageUrl + "?demo=" + slug(d);
 
-  function openSheet(id){ const el=document.getElementById(id); el.hidden=false; requestAnimationFrame(()=>el.classList.add("open")); }
-  function closeSheet(id){ const el=document.getElementById(id); if(!el) return; el.classList.remove("open"); setTimeout(()=>{ el.hidden=true; }, 340); if(id==="ob") localStorage.setItem("ob-done","1"); }
-  document.addEventListener("click", e=>{
-    const c=e.target.closest("[data-close]"); if(c){ closeSheet(c.dataset.close); return; }
-    if(e.target.classList && e.target.classList.contains("sheet-backdrop")) closeSheet(e.target.id);
-  });
+  let savedScroll=0, scrollLocked=false;
+  function lockScroll(){ if(scrollLocked) return; scrollLocked=true; savedScroll=window.scrollY||0; document.body.style.top="-"+savedScroll+"px"; document.body.classList.add("modal-open"); }
+  function unlockScroll(){ if(!scrollLocked) return; scrollLocked=false; document.body.classList.remove("modal-open"); document.body.style.top=""; window.scrollTo(0,savedScroll); }
+  function openSheet(id){ const el=document.getElementById(id); el.hidden=false; lockScroll(); requestAnimationFrame(()=>el.classList.add("open")); }
+  function closeSheet(id){ const el=document.getElementById(id); if(!el) return; el.classList.remove("open"); setTimeout(()=>{ el.hidden=true; }, 340); unlockScroll(); if(id==="ob") localStorage.setItem("ob-done","1"); }
+  // Direkte Handler auf jeden Schließen-Button (robuster als Event-Delegation auf iOS-Safari)
+  document.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click", () => closeSheet(b.dataset.close)));
+  document.querySelectorAll(".sheet-backdrop").forEach(bd => bd.addEventListener("click", e => { if(e.target===bd) closeSheet(bd.id); }));
   document.addEventListener("keydown", e=>{ if(e.key==="Escape") document.querySelectorAll(".sheet-backdrop.open").forEach(el=>closeSheet(el.id)); });
 
   // ---- Kalender (.ics mit Erinnerung: 1 Tag + 2 Std. vorher) ----
@@ -529,7 +533,7 @@
     const how=document.getElementById("ob-how");
     if(deferred){ how.innerHTML='<button class="sheet-btn primary" id="ob-install">Jetzt installieren</button>';
       document.getElementById("ob-install").onclick=async()=>{ deferred.prompt(); try{await deferred.userChoice;}catch(e){} deferred=null; closeSheet("ob"); }; }
-    else if(isiOS){ how.innerHTML='<div class="ob-step"><b>1</b><span>Tippe unten in Safari auf das <b>Teilen</b>-Symbol (Quadrat mit Pfeil nach oben).</span></div><div class="ob-step"><b>2</b><span>Wähle <b>„Zum Home-Bildschirm"</b> und bestätige.</span></div>'; }
+    else if(isiOS){ how.innerHTML='<div class="ob-step"><b>1</b><span>Tippe unten in der Safari-Leiste auf das Teilen-Symbol <svg width="15" height="19" viewBox="0 0 16 20" style="vertical-align:-4px" aria-hidden="true"><path d="M8 1.5 L8 12.5" stroke="#fb4b14" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M4.5 5 L8 1.5 L11.5 5" stroke="#fb4b14" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 8 L2 8 L2 18 L14 18 L14 8 L12.5 8" stroke="#fb4b14" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> .</span></div><div class="ob-step"><b>2</b><span>Etwas nach unten wischen und <b>„Zum Home-Bildschirm"</b> wählen.</span></div>'; }
     else { how.innerHTML='<div class="ob-step"><b>›</b><span>Öffne das Browser-Menü (⋮) und wähle <b>„App installieren"</b> bzw. <b>„Zum Startbildschirm hinzufügen"</b>.</span></div>'; }
   }
   function showOb(force){ if(standalone) return; if(!force&&localStorage.getItem("ob-done")) return; fillOb(); openSheet("ob"); }
