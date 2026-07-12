@@ -1,9 +1,9 @@
 // Demomelder Service Worker — network-first, damit die Termine immer frisch sind,
 // mit Cache-Fallback für Offline-Nutzung.
-const CACHE = "demomelder-v2";
+const CACHE = "demomelder-v3";
 const SHELL = [
   "./", "./index.html", "./demos.js", "./manifest.webmanifest",
-  "./icon.svg", "./icon-192.png", "./apple-touch-icon.png",
+  "./icon-192.png", "./apple-touch-icon.png",
 ];
 
 self.addEventListener("install", (e) => {

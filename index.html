@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Demomelder Stuttgart</title>
-<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#f3f3f0" media="(prefers-color-scheme: light)">
@@ -191,7 +191,7 @@
   }
 
   /* ---------------- Bottom-Sheets (Onboarding / Teilen) ---------------- */
-  body.modal-open{position:fixed; left:0; right:0; width:100%; overflow:hidden}
+  html.modal-open, html.modal-open body{overflow:hidden}
   .sheet-backdrop{position:fixed; inset:0; z-index:100; background:rgba(20,19,17,.55);
     display:flex; align-items:flex-end; justify-content:center; opacity:0; transition:opacity 220ms var(--ease-out)}
   .sheet-backdrop.open{opacity:1}
@@ -406,17 +406,17 @@
 </script>
   <div id="ob" class="sheet-backdrop" hidden>
     <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="ob-t">
-      <button class="sheet-x" type="button" data-close="ob" aria-label="Schließen">×</button>
+      <button class="sheet-x" type="button" data-close="ob" onclick="window.__demoClose&&window.__demoClose('ob')" aria-label="Schließen">×</button>
       <h2 id="ob-t" class="sheet-h">Aufs Handy legen</h2>
       <p class="sheet-p">Ein Tipp aufs Icon, und du hast die nächsten Demos in Stuttgart sofort parat. Wie eine App, ohne Browser-Suchen, auch offline lesbar.</p>
       <div id="ob-how"></div>
-      <button class="sheet-btn" type="button" data-close="ob">Später</button>
+      <button class="sheet-btn" type="button" data-close="ob" onclick="window.__demoClose&&window.__demoClose('ob')">Später</button>
     </div>
   </div>
 
   <div id="sh" class="sheet-backdrop" hidden>
     <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">
-      <button class="sheet-x" type="button" data-close="sh" aria-label="Schließen">×</button>
+      <button class="sheet-x" type="button" data-close="sh" onclick="window.__demoClose&&window.__demoClose('sh')" aria-label="Schließen">×</button>
       <h2 id="sh-t" class="sheet-h">Demo teilen</h2>
       <img id="sh-preview" class="sh-preview" alt="Vorschau des Sharepics">
       <div id="sh-actions"></div>
@@ -435,14 +435,19 @@
   const pageUrl = location.origin + location.pathname;
   const linkFor = d => pageUrl + "?demo=" + slug(d);
 
-  let savedScroll=0, scrollLocked=false;
-  function lockScroll(){ if(scrollLocked) return; scrollLocked=true; savedScroll=window.scrollY||0; document.body.style.top="-"+savedScroll+"px"; document.body.classList.add("modal-open"); }
-  function unlockScroll(){ if(!scrollLocked) return; scrollLocked=false; document.body.classList.remove("modal-open"); document.body.style.top=""; window.scrollTo(0,savedScroll); }
+  // Scroll-Lock über overflow:hidden am <html> — NICHT position:fixed am Body
+  // (das zerschießt auf iOS position:sticky und die Tap-Ziele des Sheets).
+  function lockScroll(){ document.documentElement.classList.add("modal-open"); }
+  function unlockScroll(){ document.documentElement.classList.remove("modal-open"); }
   function openSheet(id){ const el=document.getElementById(id); el.hidden=false; lockScroll(); requestAnimationFrame(()=>el.classList.add("open")); }
   function closeSheet(id){ const el=document.getElementById(id); if(!el) return; el.classList.remove("open"); setTimeout(()=>{ el.hidden=true; }, 340); unlockScroll(); if(id==="ob") localStorage.setItem("ob-done","1"); }
+  window.__demoClose = closeSheet;
   // Direkte Handler auf jeden Schließen-Button (robuster als Event-Delegation auf iOS-Safari)
   document.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click", () => closeSheet(b.dataset.close)));
-  document.querySelectorAll(".sheet-backdrop").forEach(bd => bd.addEventListener("click", e => { if(e.target===bd) closeSheet(bd.id); }));
+  document.querySelectorAll(".sheet-backdrop").forEach(bd => {
+    bd.addEventListener("click", e => { if(e.target===bd) closeSheet(bd.id); });
+    bd.addEventListener("touchmove", e => { if(!e.target.closest(".sheet")) e.preventDefault(); }, { passive:false });
+  });
   document.addEventListener("keydown", e=>{ if(e.key==="Escape") document.querySelectorAll(".sheet-backdrop.open").forEach(el=>closeSheet(el.id)); });
 
   // ---- Kalender (.ics mit Erinnerung: 1 Tag + 2 Std. vorher) ----
