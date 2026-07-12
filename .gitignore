@@ -1,0 +1,13 @@
+# Betriebssystem
+.DS_Store
+
+# Editor-/Tooling-Kram (nicht Teil der Website)
+.agents/
+.claude/
+skills-lock.json
+
+# Interne Wegwerf-/Arbeitsdateien
+mockup-ab.html
+
+# Node
+node_modules/
