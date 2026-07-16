@@ -194,6 +194,9 @@
   /* Scroll-Lock bewusst entfernt: konnte hängen bleiben und die Seite dauerhaft unscrollbar machen */
   .sheet-backdrop{position:fixed; inset:0; z-index:100; background:rgba(20,19,17,.55);
     display:flex; align-items:flex-end; justify-content:center; opacity:0; transition:opacity 220ms var(--ease-out)}
+  /* WICHTIG: ohne diese Regel überschreibt display:flex das hidden-Attribut,
+     die unsichtbare Ebene bleibt liegen und schluckt jeden Klick auf der Seite. */
+  .sheet-backdrop[hidden]{display:none !important}
   .sheet-backdrop.open{opacity:1}
   .sheet{background:var(--paper); color:var(--ink); width:100%; max-width:520px; border:2px solid var(--rule); border-bottom:0;
     padding:28px 24px 34px; position:relative; max-height:88vh; overflow-y:auto;
@@ -393,7 +396,7 @@
     + `<div class="srcstat">${stat}</div>`
     + `<p>Aggregiert aus öffentlichen zivilgesellschaftlichen Kalendern. Angezeigt werden nur Sachdaten (Datum, Zeit, Ort, Thema), keine personenbezogenen Anmelderdaten. Jede Quelle bildet ihr eigenes politisches Spektrum ab, die Farbe kennzeichnet das. Die Übersicht wird automatisch mehrmals täglich aktualisiert.</p>`
     + `<p style="margin-top:10px">Aufs Handy legen: in Safari unten auf das Teilen-Symbol tippen, dann „Zum Home-Bildschirm". In Chrome über das Menü „Zum Startbildschirm hinzufügen".</p>`
-    + `<p style="margin-top:10px"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Version <b style="font-family:inherit;font-size:inherit;text-transform:none;letter-spacing:0;color:var(--signal)">v7</b></p>`;
+    + `<p style="margin-top:10px"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Version <b style="font-family:inherit;font-size:inherit;text-transform:none;letter-spacing:0;color:var(--signal)">v8</b></p>`;
 
   // Toolbar bekommt einen Schatten, sobald sie oben klebt (kein Scroll-Listener)
   const toolsEl = document.querySelector(".tools");
