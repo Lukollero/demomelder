@@ -191,7 +191,7 @@
   }
 
   /* ---------------- Bottom-Sheets (Onboarding / Teilen) ---------------- */
-  html.modal-open, html.modal-open body{overflow:hidden}
+  /* Scroll-Lock bewusst entfernt: konnte hängen bleiben und die Seite dauerhaft unscrollbar machen */
   .sheet-backdrop{position:fixed; inset:0; z-index:100; background:rgba(20,19,17,.55);
     display:flex; align-items:flex-end; justify-content:center; opacity:0; transition:opacity 220ms var(--ease-out)}
   .sheet-backdrop.open{opacity:1}
@@ -393,7 +393,7 @@
     + `<div class="srcstat">${stat}</div>`
     + `<p>Aggregiert aus öffentlichen zivilgesellschaftlichen Kalendern. Angezeigt werden nur Sachdaten (Datum, Zeit, Ort, Thema), keine personenbezogenen Anmelderdaten. Jede Quelle bildet ihr eigenes politisches Spektrum ab, die Farbe kennzeichnet das. Die Übersicht wird automatisch mehrmals täglich aktualisiert.</p>`
     + `<p style="margin-top:10px">Aufs Handy legen: in Safari unten auf das Teilen-Symbol tippen, dann „Zum Home-Bildschirm". In Chrome über das Menü „Zum Startbildschirm hinzufügen".</p>`
-    + `<p style="margin-top:10px"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Version <b style="font-family:inherit;font-size:inherit;text-transform:none;letter-spacing:0;color:var(--signal)">v6</b></p>`;
+    + `<p style="margin-top:10px"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Version <b style="font-family:inherit;font-size:inherit;text-transform:none;letter-spacing:0;color:var(--signal)">v7</b></p>`;
 
   // Toolbar bekommt einen Schatten, sobald sie oben klebt (kein Scroll-Listener)
   const toolsEl = document.querySelector(".tools");
@@ -428,10 +428,13 @@
 
   // Scroll-Lock über overflow:hidden am <html> — NICHT position:fixed am Body
   // (das zerschießt auf iOS position:sticky und die Tap-Ziele des Sheets).
-  function lockScroll(){ document.documentElement.classList.add("modal-open"); }
-  function unlockScroll(){ document.documentElement.classList.remove("modal-open"); }
-  function openSheet(id){ const el=document.getElementById(id); el.hidden=false; lockScroll(); requestAnimationFrame(()=>el.classList.add("open")); }
-  function closeSheet(id){ const el=document.getElementById(id); if(!el) return; el.classList.remove("open"); setTimeout(()=>{ el.hidden=true; }, 340); unlockScroll(); }
+  // Kein Scroll-Lock mehr: er konnte hängen bleiben und die Seite dauerhaft unscrollbar machen.
+  // Sicherheitsnetz: falls von einer alten Version noch eine Sperre klebt, hier lösen.
+  document.documentElement.classList.remove("modal-open");
+  document.documentElement.style.overflow = "";
+  document.body.style.overflow = ""; document.body.style.position = ""; document.body.style.top = "";
+  function openSheet(id){ const el=document.getElementById(id); el.hidden=false; requestAnimationFrame(()=>el.classList.add("open")); }
+  function closeSheet(id){ const el=document.getElementById(id); if(!el) return; el.classList.remove("open"); setTimeout(()=>{ el.hidden=true; }, 340); }
   window.__demoClose = closeSheet;
   // Direkte Handler auf jeden Schließen-Button (robuster als Event-Delegation auf iOS-Safari)
   document.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click", () => closeSheet(b.dataset.close)));
