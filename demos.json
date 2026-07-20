@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T07:30:38.186Z",
+  "generatedAt": "2026-07-20T16:00:50.099Z",
   "heute": "2026-07-20",
   "quellen": [
     {
@@ -7,15 +7,15 @@
       "name": "eintopf.info",
       "ok": true,
       "count": 8,
-      "ms": 4124,
+      "ms": 3750,
       "error": null
     },
     {
       "key": "friedenskoop",
       "name": "Friedenskooperative",
       "ok": true,
-      "count": 1,
-      "ms": 4866,
+      "count": 2,
+      "ms": 4947,
       "error": null
     },
     {
@@ -23,7 +23,7 @@
       "name": "DemokraTEAM",
       "ok": true,
       "count": 1,
-      "ms": 698,
+      "ms": 705,
       "error": null
     },
     {
@@ -31,7 +31,7 @@
       "name": "PRÜF (demokrateam)",
       "ok": true,
       "count": 1,
-      "ms": 124,
+      "ms": 103,
       "error": null
     },
     {
@@ -39,7 +39,7 @@
       "name": "Fridays for Future",
       "ok": true,
       "count": 0,
-      "ms": 2468,
+      "ms": 1016,
       "error": null
     },
     {
@@ -47,7 +47,7 @@
       "name": "Montagsdemo (Parkschützer)",
       "ok": true,
       "count": 8,
-      "ms": 946,
+      "ms": 1163,
       "error": null
     },
     {
@@ -59,7 +59,7 @@
       "error": null
     }
   ],
-  "anzahl": 19,
+  "anzahl": 20,
   "demos": [
     {
       "titel": "814. Montagsdemo gegen Stuttgart 21",
@@ -168,6 +168,22 @@
       "id": "Montagsdemo (Parkschützer)-2026-07-27-6"
     },
     {
+      "titel": "Kriege beenden! Frieden jetzt!",
+      "datum": "2026-07-30",
+      "zeit": "17:00",
+      "endeZeit": null,
+      "ort": "Stuttgart",
+      "beschreibung": null,
+      "url": "https://www.friedenskooperative.de/termine/kriege-beenden-frieden-jetzt-39",
+      "kategorien": [
+        "Mahnwache"
+      ],
+      "quelle": "Friedenskooperative",
+      "spektrum": "Friedensbewegung",
+      "weitereQuellen": [],
+      "id": "Friedenskooperative-2026-07-30-7"
+    },
+    {
       "titel": "816. Montagsdemo gegen Stuttgart 21",
       "datum": "2026-08-03",
       "zeit": "18:00",
@@ -179,7 +195,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-08-03-7"
+      "id": "Montagsdemo (Parkschützer)-2026-08-03-8"
     },
     {
       "titel": "PRÜF Baden-Württemberg",
@@ -193,7 +209,7 @@
       "quelle": "PRÜF (demokrateam)",
       "spektrum": "gegen rechts",
       "weitereQuellen": [],
-      "id": "PRÜF (demokrateam)-2026-08-08-8"
+      "id": "PRÜF (demokrateam)-2026-08-08-9"
     },
     {
       "titel": "817. Montagsdemo gegen Stuttgart 21",
@@ -207,7 +223,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-08-10-9"
+      "id": "Montagsdemo (Parkschützer)-2026-08-10-10"
     },
     {
       "titel": "818. Montagsdemo gegen Stuttgart 21",
@@ -221,7 +237,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-08-17-10"
+      "id": "Montagsdemo (Parkschützer)-2026-08-17-11"
     },
     {
       "titel": "819. Montagsdemo gegen Stuttgart 21",
@@ -235,7 +251,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-08-24-11"
+      "id": "Montagsdemo (Parkschützer)-2026-08-24-12"
     },
     {
       "titel": "820. Montagsdemo gegen Stuttgart 21",
@@ -249,7 +265,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-08-31-12"
+      "id": "Montagsdemo (Parkschützer)-2026-08-31-13"
     },
     {
       "titel": "821. Montagsdemo gegen Stuttgart 21",
@@ -263,7 +279,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-09-07-13"
+      "id": "Montagsdemo (Parkschützer)-2026-09-07-14"
     },
     {
       "titel": "Kidical Mass Botnang",
@@ -279,7 +295,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-09-20-14"
+      "id": "eintopf.info-2026-09-20-15"
     },
     {
       "titel": "Kidical Mass City",
@@ -295,7 +311,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-09-20-15"
+      "id": "eintopf.info-2026-09-20-16"
     },
     {
       "titel": "Kidical Mass Weilimdorf",
@@ -311,7 +327,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-10-11-16"
+      "id": "eintopf.info-2026-10-11-17"
     },
     {
       "titel": "Kidical Mass Möhringen",
@@ -327,7 +343,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-10-18-17"
+      "id": "eintopf.info-2026-10-18-18"
     },
     {
       "titel": "Kidical Mass Halloween City",
@@ -343,7 +359,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-10-31-18"
+      "id": "eintopf.info-2026-10-31-19"
     }
   ]
 }
