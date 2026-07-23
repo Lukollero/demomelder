@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-22T15:51:03.399Z",
-  "heute": "2026-07-22",
+  "generatedAt": "2026-07-23T06:40:39.585Z",
+  "heute": "2026-07-23",
   "quellen": [
     {
       "key": "eintopf",
       "name": "eintopf.info",
       "ok": true,
       "count": 8,
-      "ms": 4059,
+      "ms": 3484,
       "error": null
     },
     {
@@ -15,7 +15,7 @@
       "name": "Friedenskooperative",
       "ok": true,
       "count": 1,
-      "ms": 5087,
+      "ms": 5699,
       "error": null
     },
     {
@@ -23,7 +23,7 @@
       "name": "DemokraTEAM",
       "ok": true,
       "count": 1,
-      "ms": 539,
+      "ms": 4684,
       "error": null
     },
     {
@@ -31,7 +31,7 @@
       "name": "PRÜF (demokrateam)",
       "ok": true,
       "count": 1,
-      "ms": 99,
+      "ms": 130,
       "error": null
     },
     {
@@ -39,7 +39,7 @@
       "name": "Fridays for Future",
       "ok": true,
       "count": 0,
-      "ms": 1910,
+      "ms": 2583,
       "error": null
     },
     {
@@ -47,7 +47,7 @@
       "name": "Montagsdemo (Parkschützer)",
       "ok": true,
       "count": 8,
-      "ms": 1122,
+      "ms": 1041,
       "error": null
     },
     {
@@ -62,22 +62,6 @@
   "anzahl": 19,
   "demos": [
     {
-      "titel": "Prozessbegleitung Ulm 5",
-      "datum": "2026-07-22",
-      "zeit": "08:00",
-      "endeZeit": null,
-      "ort": "JVA Stammheim",
-      "beschreibung": "",
-      "url": "https://eintopf.info/event/0f2011bc-17fa-4aef-a859-3b0e0b0c4a6f",
-      "kategorien": [
-        "Internationalismus"
-      ],
-      "quelle": "eintopf.info",
-      "spektrum": "links / zivilgesellschaftlich",
-      "weitereQuellen": [],
-      "id": "eintopf.info-2026-07-22-0"
-    },
-    {
       "titel": "CSD Parade",
       "datum": "2026-07-25",
       "zeit": "10:00",
@@ -85,6 +69,22 @@
       "ort": "Stuttgart, Innenstadt",
       "beschreibung": "Wir sind (wieder) dabei!\nAuch dieses Jahr sind die RAMPE, das Künstlerhaus Stuttgart, die Akademie Schloss Solitude, der Württembergische Kunstverein, der Kunstverein Wagenhalle und zum ersten Mal auch das Kulturzentrum Merlin sowie K34 ge…",
       "url": "https://eintopf.info/event/d61da344-5900-4c60-a10a-59a93977bdca",
+      "kategorien": [
+        "Queer"
+      ],
+      "quelle": "eintopf.info",
+      "spektrum": "links / zivilgesellschaftlich",
+      "weitereQuellen": [],
+      "id": "eintopf.info-2026-07-25-0"
+    },
+    {
+      "titel": "Umsonst & Draußen goes Stuttgart PRIDE",
+      "datum": "2026-07-25",
+      "zeit": "14:00",
+      "endeZeit": null,
+      "ort": "Stuttgart PRIDE",
+      "beschreibung": "Ohne Uns kein Wir\n\nIm Juli sind in Stuttgart die PRIDE Kulturwochen, die zwei Wochen vor dem U&D in der großen CSD-Demonstration gipfeln. Eine große bunte liebevolle und kämpferische Demonstration für die gesellschaftlichen und politischen…",
+      "url": "https://eintopf.info/event/dc4de032-c5b6-41e5-86b4-4d2cc45cfff7",
       "kategorien": [
         "Queer"
       ],
