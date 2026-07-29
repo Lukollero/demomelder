@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T06:45:52.812Z",
+  "generatedAt": "2026-07-29T15:57:33.916Z",
   "heute": "2026-07-29",
   "quellen": [
     {
@@ -7,7 +7,7 @@
       "name": "eintopf.info",
       "ok": true,
       "count": 5,
-      "ms": 3670,
+      "ms": 3548,
       "error": null
     },
     {
@@ -15,7 +15,7 @@
       "name": "Friedenskooperative",
       "ok": true,
       "count": 1,
-      "ms": 8430,
+      "ms": 5193,
       "error": null
     },
     {
@@ -23,7 +23,7 @@
       "name": "DemokraTEAM",
       "ok": true,
       "count": 0,
-      "ms": 1064,
+      "ms": 754,
       "error": null
     },
     {
@@ -31,7 +31,7 @@
       "name": "PRÜF (demokrateam)",
       "ok": true,
       "count": 1,
-      "ms": 167,
+      "ms": 124,
       "error": null
     },
     {
@@ -39,7 +39,7 @@
       "name": "Fridays for Future",
       "ok": true,
       "count": 0,
-      "ms": 1725,
+      "ms": 1544,
       "error": null
     },
     {
@@ -47,7 +47,7 @@
       "name": "Montagsdemo (Parkschützer)",
       "ok": true,
       "count": 8,
-      "ms": 1096,
+      "ms": 941,
       "error": null
     },
     {
@@ -94,9 +94,9 @@
     {
       "titel": "PRÜF Baden-Württemberg",
       "datum": "2026-08-08",
-      "zeit": null,
+      "zeit": "14:00",
       "endeZeit": null,
-      "ort": "Stuttgart, Ort tba",
+      "ort": "Stuttgart, Oberer Schlossgarten",
       "beschreibung": null,
       "url": "https://www.demokrateam.org/aktionen/pruef-baden-wuerttemberg/",
       "kategorien": [],
