@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-08-04T06:41:27.582Z",
+  "generatedAt": "2026-08-04T16:21:46.346Z",
   "heute": "2026-08-04",
   "quellen": [
     {
       "key": "eintopf",
       "name": "eintopf.info",
       "ok": true,
-      "count": 5,
-      "ms": 4236,
+      "count": 6,
+      "ms": 4076,
       "error": null
     },
     {
@@ -15,7 +15,7 @@
       "name": "Friedenskooperative",
       "ok": true,
       "count": 0,
-      "ms": 5833,
+      "ms": 6729,
       "error": null
     },
     {
@@ -23,7 +23,7 @@
       "name": "DemokraTEAM",
       "ok": true,
       "count": 0,
-      "ms": 741,
+      "ms": 4366,
       "error": null
     },
     {
@@ -31,7 +31,7 @@
       "name": "PRÜF (demokrateam)",
       "ok": true,
       "count": 1,
-      "ms": 102,
+      "ms": 104,
       "error": null
     },
     {
@@ -39,7 +39,7 @@
       "name": "Fridays for Future",
       "ok": true,
       "count": 0,
-      "ms": 1557,
+      "ms": 656,
       "error": null
     },
     {
@@ -47,7 +47,7 @@
       "name": "Montagsdemo (Parkschützer)",
       "ok": true,
       "count": 8,
-      "ms": 1194,
+      "ms": 1076,
       "error": null
     },
     {
@@ -59,7 +59,7 @@
       "error": null
     }
   ],
-  "anzahl": 14,
+  "anzahl": 15,
   "demos": [
     {
       "titel": "PRÜF Baden-Württemberg",
@@ -146,6 +146,22 @@
       "id": "Montagsdemo (Parkschützer)-2026-09-07-5"
     },
     {
+      "titel": "StraßenFFFest",
+      "datum": "2026-09-12",
+      "zeit": "14:00",
+      "endeZeit": "17:00",
+      "ort": "Arsenalplatz Ludwigsburg",
+      "beschreibung": "Liebe Mitstreikende,\nwir alle wissen: Die Klimakrise ist gesamtgesellschaftlich kaum mehr ein Thema. Neben der Gefahr des Faschismus, sozialen Kürzungen, Kriegen und Genoziden wirkt die Klimakrise wie ein weit entferntes, nicht besonders a…",
+      "url": "https://eintopf.info/event/4422a39d-9ad5-43ed-9fa8-a558a02aa03d",
+      "kategorien": [
+        "Klimagerechtigkeit"
+      ],
+      "quelle": "eintopf.info",
+      "spektrum": "links / zivilgesellschaftlich",
+      "weitereQuellen": [],
+      "id": "eintopf.info-2026-09-12-6"
+    },
+    {
       "titel": "822. Montagsdemo gegen Stuttgart 21",
       "datum": "2026-09-14",
       "zeit": "18:00",
@@ -157,7 +173,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-09-14-6"
+      "id": "Montagsdemo (Parkschützer)-2026-09-14-7"
     },
     {
       "titel": "Kidical Mass Botnang",
@@ -173,7 +189,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-09-20-7"
+      "id": "eintopf.info-2026-09-20-8"
     },
     {
       "titel": "Kidical Mass City",
@@ -189,7 +205,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-09-20-8"
+      "id": "eintopf.info-2026-09-20-9"
     },
     {
       "titel": "823. Montagsdemo gegen Stuttgart 21",
@@ -203,7 +219,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-09-21-9"
+      "id": "Montagsdemo (Parkschützer)-2026-09-21-10"
     },
     {
       "titel": "824. Montagsdemo gegen Stuttgart 21",
@@ -217,7 +233,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-09-28-10"
+      "id": "Montagsdemo (Parkschützer)-2026-09-28-11"
     },
     {
       "titel": "Kidical Mass Weilimdorf",
@@ -233,7 +249,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-10-11-11"
+      "id": "eintopf.info-2026-10-11-12"
     },
     {
       "titel": "Kidical Mass Möhringen",
@@ -249,7 +265,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-10-18-12"
+      "id": "eintopf.info-2026-10-18-13"
     },
     {
       "titel": "Kidical Mass Halloween City",
@@ -265,7 +281,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-10-31-13"
+      "id": "eintopf.info-2026-10-31-14"
     }
   ]
 }
