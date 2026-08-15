@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-08-15T04:48:37.743Z",
+  "generatedAt": "2026-08-15T14:36:52.012Z",
   "heute": "2026-08-15",
   "quellen": [
     {
       "key": "eintopf",
       "name": "eintopf.info",
-      "ok": false,
+      "ok": true,
       "count": 0,
-      "ms": 36037,
-      "error": "fetch failed (UND_ERR_CONNECT_TIMEOUT)"
+      "ms": 1601,
+      "error": null
     },
     {
       "key": "friedenskoop",
       "name": "Friedenskooperative",
       "ok": true,
       "count": 0,
-      "ms": 7834,
+      "ms": 11811,
       "error": null
     },
     {
@@ -23,7 +23,7 @@
       "name": "DemokraTEAM",
       "ok": true,
       "count": 0,
-      "ms": 913,
+      "ms": 7226,
       "error": null
     },
     {
@@ -31,7 +31,7 @@
       "name": "PRÜF (demokrateam)",
       "ok": true,
       "count": 1,
-      "ms": 105,
+      "ms": 165,
       "error": null
     },
     {
@@ -39,7 +39,7 @@
       "name": "Fridays for Future",
       "ok": true,
       "count": 0,
-      "ms": 2131,
+      "ms": 1929,
       "error": null
     },
     {
@@ -47,7 +47,7 @@
       "name": "Montagsdemo (Parkschützer)",
       "ok": true,
       "count": 8,
-      "ms": 930,
+      "ms": 1470,
       "error": null
     },
     {
@@ -120,9 +120,9 @@
     {
       "titel": "PRÜF Baden-Württemberg",
       "datum": "2026-09-12",
-      "zeit": null,
+      "zeit": "14:00",
       "endeZeit": null,
-      "ort": "Stuttgart, Ort tba",
+      "ort": "Stuttgart, Oberer Schlossgarten",
       "beschreibung": null,
       "url": "https://www.demokrateam.org/aktionen/pruef-baden-wuerttemberg/",
       "kategorien": [],
