@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-10-10T18:32:21.245Z",
-  "heute": "2026-10-10",
+  "generatedAt": "2026-10-11T10:50:09.747Z",
+  "heute": "2026-10-11",
   "quellen": [
     {
       "key": "eintopf",
       "name": "eintopf.info",
       "ok": true,
       "count": 0,
-      "ms": 869,
+      "ms": 1042,
       "error": null
     },
     {
@@ -15,7 +15,7 @@
       "name": "Friedenskooperative",
       "ok": true,
       "count": 0,
-      "ms": 882,
+      "ms": 874,
       "error": null
     },
     {
@@ -23,7 +23,7 @@
       "name": "DemokraTEAM",
       "ok": true,
       "count": 0,
-      "ms": 463,
+      "ms": 4856,
       "error": null
     },
     {
@@ -31,7 +31,7 @@
       "name": "PRÜF (demokrateam)",
       "ok": true,
       "count": 1,
-      "ms": 159,
+      "ms": 1759,
       "error": null
     },
     {
@@ -39,7 +39,7 @@
       "name": "Fridays for Future",
       "ok": true,
       "count": 0,
-      "ms": 1633,
+      "ms": 2382,
       "error": null
     },
     {
@@ -47,7 +47,7 @@
       "name": "Montagsdemo (Parkschützer)",
       "ok": true,
       "count": 8,
-      "ms": 1084,
+      "ms": 950,
       "error": null
     },
     {
@@ -62,20 +62,6 @@
   "anzahl": 9,
   "demos": [
     {
-      "titel": "PRÜF Baden-Württemberg",
-      "datum": "2026-10-10",
-      "zeit": "14:00",
-      "endeZeit": null,
-      "ort": "Stuttgart, Oberer Schlossgarten",
-      "beschreibung": null,
-      "url": "https://www.demokrateam.org/aktionen/pruef-baden-wuerttemberg/",
-      "kategorien": [],
-      "quelle": "PRÜF (demokrateam)",
-      "spektrum": "gegen rechts",
-      "weitereQuellen": [],
-      "id": "PRÜF (demokrateam)-2026-10-10-0"
-    },
-    {
       "titel": "826. Montagsdemo gegen Stuttgart 21",
       "datum": "2026-10-12",
       "zeit": "18:00",
@@ -87,7 +73,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-10-12-1"
+      "id": "Montagsdemo (Parkschützer)-2026-10-12-0"
     },
     {
       "titel": "827. Montagsdemo gegen Stuttgart 21",
@@ -101,7 +87,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-10-19-2"
+      "id": "Montagsdemo (Parkschützer)-2026-10-19-1"
     },
     {
       "titel": "828. Montagsdemo gegen Stuttgart 21",
@@ -115,7 +101,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-10-26-3"
+      "id": "Montagsdemo (Parkschützer)-2026-10-26-2"
     },
     {
       "titel": "829. Montagsdemo gegen Stuttgart 21",
@@ -129,7 +115,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-11-02-4"
+      "id": "Montagsdemo (Parkschützer)-2026-11-02-3"
     },
     {
       "titel": "830. Montagsdemo gegen Stuttgart 21",
@@ -143,7 +129,21 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-11-09-5"
+      "id": "Montagsdemo (Parkschützer)-2026-11-09-4"
+    },
+    {
+      "titel": "PRÜF Baden-Württemberg",
+      "datum": "2026-11-14",
+      "zeit": null,
+      "endeZeit": null,
+      "ort": "Stuttgart, Ort tba",
+      "beschreibung": null,
+      "url": "https://www.demokrateam.org/aktionen/pruef-baden-wuerttemberg/",
+      "kategorien": [],
+      "quelle": "PRÜF (demokrateam)",
+      "spektrum": "gegen rechts",
+      "weitereQuellen": [],
+      "id": "PRÜF (demokrateam)-2026-11-14-5"
     },
     {
       "titel": "831. Montagsdemo gegen Stuttgart 21",
