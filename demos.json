@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-10-15T18:15:04.075Z",
-  "heute": "2026-10-15",
+  "generatedAt": "2026-10-16T09:02:21.536Z",
+  "heute": "2026-10-16",
   "quellen": [
     {
       "key": "eintopf",
       "name": "eintopf.info",
       "ok": true,
       "count": 0,
-      "ms": 921,
+      "ms": 1206,
       "error": null
     },
     {
@@ -15,7 +15,7 @@
       "name": "Friedenskooperative",
       "ok": true,
       "count": 0,
-      "ms": 977,
+      "ms": 1191,
       "error": null
     },
     {
@@ -23,7 +23,7 @@
       "name": "DemokraTEAM",
       "ok": true,
       "count": 0,
-      "ms": 5831,
+      "ms": 6131,
       "error": null
     },
     {
@@ -31,7 +31,7 @@
       "name": "PRÜF (demokrateam)",
       "ok": true,
       "count": 1,
-      "ms": 1843,
+      "ms": 335,
       "error": null
     },
     {
@@ -39,7 +39,7 @@
       "name": "Fridays for Future",
       "ok": true,
       "count": 0,
-      "ms": 862,
+      "ms": 2064,
       "error": null
     },
     {
@@ -47,7 +47,7 @@
       "name": "Montagsdemo (Parkschützer)",
       "ok": true,
       "count": 8,
-      "ms": 1060,
+      "ms": 1709,
       "error": null
     },
     {
@@ -120,7 +120,7 @@
     {
       "titel": "PRÜF Baden-Württemberg",
       "datum": "2026-11-14",
-      "zeit": null,
+      "zeit": "14:00",
       "endeZeit": null,
       "ort": "Stuttgart, Ort tba",
       "beschreibung": null,
