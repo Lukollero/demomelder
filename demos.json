@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-10-18T17:19:30.763Z",
-  "heute": "2026-10-18",
+  "generatedAt": "2026-10-19T09:57:20.579Z",
+  "heute": "2026-10-19",
   "quellen": [
     {
       "key": "eintopf",
       "name": "eintopf.info",
       "ok": true,
-      "count": 3,
-      "ms": 3535,
+      "count": 2,
+      "ms": 3049,
       "error": null
     },
     {
@@ -15,7 +15,7 @@
       "name": "Friedenskooperative",
       "ok": true,
       "count": 0,
-      "ms": 1403,
+      "ms": 136838,
       "error": null
     },
     {
@@ -23,7 +23,7 @@
       "name": "DemokraTEAM",
       "ok": true,
       "count": 0,
-      "ms": 5501,
+      "ms": 426,
       "error": null
     },
     {
@@ -31,7 +31,7 @@
       "name": "PRÜF (demokrateam)",
       "ok": true,
       "count": 1,
-      "ms": 196,
+      "ms": 440,
       "error": null
     },
     {
@@ -39,7 +39,7 @@
       "name": "Fridays for Future",
       "ok": true,
       "count": 0,
-      "ms": 2027,
+      "ms": 1748,
       "error": null
     },
     {
@@ -47,7 +47,7 @@
       "name": "Montagsdemo (Parkschützer)",
       "ok": true,
       "count": 8,
-      "ms": 1611,
+      "ms": 1178,
       "error": null
     },
     {
@@ -59,24 +59,8 @@
       "error": null
     }
   ],
-  "anzahl": 12,
+  "anzahl": 11,
   "demos": [
-    {
-      "titel": "Kidical Mass Möhringen",
-      "datum": "2026-10-18",
-      "zeit": "15:00",
-      "endeZeit": "17:00",
-      "ort": "Filderbahnplatz, Filderbahnplatz Möhringen",
-      "beschreibung": null,
-      "url": "https://eintopf.info/event/148026e9-8dd7-4eb0-9c90-f2eaddd3cc35",
-      "kategorien": [
-        "Mobilität"
-      ],
-      "quelle": "eintopf.info",
-      "spektrum": "links / zivilgesellschaftlich",
-      "weitereQuellen": [],
-      "id": "eintopf.info-2026-10-18-0"
-    },
     {
       "titel": "827. Montagsdemo gegen Stuttgart 21",
       "datum": "2026-10-19",
@@ -89,7 +73,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-10-19-1"
+      "id": "Montagsdemo (Parkschützer)-2026-10-19-0"
     },
     {
       "titel": "Free the Ulm5 Bundesweite Demonstration in Stuttgart",
@@ -105,7 +89,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-10-24-2"
+      "id": "eintopf.info-2026-10-24-1"
     },
     {
       "titel": "828. Montagsdemo gegen Stuttgart 21",
@@ -119,7 +103,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-10-26-3"
+      "id": "Montagsdemo (Parkschützer)-2026-10-26-2"
     },
     {
       "titel": "Kidical Mass Halloween City",
@@ -135,7 +119,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-10-31-4"
+      "id": "eintopf.info-2026-10-31-3"
     },
     {
       "titel": "829. Montagsdemo gegen Stuttgart 21",
@@ -149,7 +133,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-11-02-5"
+      "id": "Montagsdemo (Parkschützer)-2026-11-02-4"
     },
     {
       "titel": "830. Montagsdemo gegen Stuttgart 21",
@@ -163,7 +147,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-11-09-6"
+      "id": "Montagsdemo (Parkschützer)-2026-11-09-5"
     },
     {
       "titel": "PRÜF Baden-Württemberg",
@@ -177,7 +161,7 @@
       "quelle": "PRÜF (demokrateam)",
       "spektrum": "gegen rechts",
       "weitereQuellen": [],
-      "id": "PRÜF (demokrateam)-2026-11-14-7"
+      "id": "PRÜF (demokrateam)-2026-11-14-6"
     },
     {
       "titel": "831. Montagsdemo gegen Stuttgart 21",
@@ -191,7 +175,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-11-16-8"
+      "id": "Montagsdemo (Parkschützer)-2026-11-16-7"
     },
     {
       "titel": "832. Montagsdemo gegen Stuttgart 21",
@@ -205,7 +189,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-11-23-9"
+      "id": "Montagsdemo (Parkschützer)-2026-11-23-8"
     },
     {
       "titel": "833. Montagsdemo gegen Stuttgart 21",
@@ -219,7 +203,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-11-30-10"
+      "id": "Montagsdemo (Parkschützer)-2026-11-30-9"
     },
     {
       "titel": "834. Montagsdemo gegen Stuttgart 21",
@@ -233,7 +217,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-12-07-11"
+      "id": "Montagsdemo (Parkschützer)-2026-12-07-10"
     }
   ]
 }
