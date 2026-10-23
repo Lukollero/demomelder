@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T09:21:26.171Z",
+  "generatedAt": "2026-10-23T18:17:38.154Z",
   "heute": "2026-10-23",
   "quellen": [
     {
@@ -7,7 +7,7 @@
       "name": "eintopf.info",
       "ok": true,
       "count": 2,
-      "ms": 2820,
+      "ms": 3009,
       "error": null
     },
     {
@@ -15,7 +15,7 @@
       "name": "Friedenskooperative",
       "ok": true,
       "count": 0,
-      "ms": 1215,
+      "ms": 1527,
       "error": null
     },
     {
@@ -23,7 +23,7 @@
       "name": "DemokraTEAM",
       "ok": true,
       "count": 0,
-      "ms": 6270,
+      "ms": 38574,
       "error": null
     },
     {
@@ -31,7 +31,7 @@
       "name": "PRÜF (demokrateam)",
       "ok": true,
       "count": 1,
-      "ms": 1380,
+      "ms": 1489,
       "error": null
     },
     {
@@ -39,7 +39,7 @@
       "name": "Fridays for Future",
       "ok": true,
       "count": 0,
-      "ms": 693,
+      "ms": 700,
       "error": null
     },
     {
@@ -47,7 +47,7 @@
       "name": "Montagsdemo (Parkschützer)",
       "ok": true,
       "count": 8,
-      "ms": 1270,
+      "ms": 1101,
       "error": null
     },
     {
@@ -140,7 +140,7 @@
       "datum": "2026-11-14",
       "zeit": "14:00",
       "endeZeit": null,
-      "ort": "Stuttgart, Ort tba",
+      "ort": "Stuttgart, Schlossplatz",
       "beschreibung": null,
       "url": "https://www.demokrateam.org/aktionen/pruef-baden-wuerttemberg/",
       "kategorien": [],
