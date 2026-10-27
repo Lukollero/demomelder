@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-10-26T19:54:27.860Z",
-  "heute": "2026-10-26",
+  "generatedAt": "2026-10-27T09:49:36.075Z",
+  "heute": "2026-10-27",
   "quellen": [
     {
       "key": "eintopf",
       "name": "eintopf.info",
       "ok": true,
       "count": 1,
-      "ms": 3227,
+      "ms": 3365,
       "error": null
     },
     {
@@ -15,7 +15,7 @@
       "name": "Friedenskooperative",
       "ok": true,
       "count": 0,
-      "ms": 1312,
+      "ms": 1686,
       "error": null
     },
     {
@@ -23,7 +23,7 @@
       "name": "DemokraTEAM",
       "ok": true,
       "count": 0,
-      "ms": 401,
+      "ms": 715,
       "error": null
     },
     {
@@ -31,7 +31,7 @@
       "name": "PRÜF (demokrateam)",
       "ok": true,
       "count": 1,
-      "ms": 149,
+      "ms": 265,
       "error": null
     },
     {
@@ -39,7 +39,7 @@
       "name": "Fridays for Future",
       "ok": true,
       "count": 0,
-      "ms": 740,
+      "ms": 1029,
       "error": null
     },
     {
@@ -47,7 +47,7 @@
       "name": "Montagsdemo (Parkschützer)",
       "ok": true,
       "count": 8,
-      "ms": 1056,
+      "ms": 1610,
       "error": null
     },
     {
@@ -62,20 +62,6 @@
   "anzahl": 10,
   "demos": [
     {
-      "titel": "828. Montagsdemo gegen Stuttgart 21",
-      "datum": "2026-10-26",
-      "zeit": "18:00",
-      "endeZeit": null,
-      "ort": "Schlossplatz, Stuttgart",
-      "beschreibung": "Wöchentliche Kundgebung der Parkschützer:innen (seit 2010).",
-      "url": "https://www.bei-abriss-aufstand.de/",
-      "kategorien": [],
-      "quelle": "Montagsdemo (Parkschützer)",
-      "spektrum": "Stuttgart 21",
-      "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-10-26-0"
-    },
-    {
       "titel": "Kidical Mass Halloween City",
       "datum": "2026-10-31",
       "zeit": "16:00",
@@ -89,7 +75,7 @@
       "quelle": "eintopf.info",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "eintopf.info-2026-10-31-1"
+      "id": "eintopf.info-2026-10-31-0"
     },
     {
       "titel": "829. Montagsdemo gegen Stuttgart 21",
@@ -103,7 +89,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-11-02-2"
+      "id": "Montagsdemo (Parkschützer)-2026-11-02-1"
     },
     {
       "titel": "830. Montagsdemo gegen Stuttgart 21",
@@ -117,7 +103,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-11-09-3"
+      "id": "Montagsdemo (Parkschützer)-2026-11-09-2"
     },
     {
       "titel": "PRÜF Baden-Württemberg",
@@ -131,7 +117,7 @@
       "quelle": "PRÜF (demokrateam)",
       "spektrum": "gegen rechts",
       "weitereQuellen": [],
-      "id": "PRÜF (demokrateam)-2026-11-14-4"
+      "id": "PRÜF (demokrateam)-2026-11-14-3"
     },
     {
       "titel": "831. Montagsdemo gegen Stuttgart 21",
@@ -145,7 +131,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-11-16-5"
+      "id": "Montagsdemo (Parkschützer)-2026-11-16-4"
     },
     {
       "titel": "832. Montagsdemo gegen Stuttgart 21",
@@ -159,7 +145,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-11-23-6"
+      "id": "Montagsdemo (Parkschützer)-2026-11-23-5"
     },
     {
       "titel": "833. Montagsdemo gegen Stuttgart 21",
@@ -173,7 +159,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-11-30-7"
+      "id": "Montagsdemo (Parkschützer)-2026-11-30-6"
     },
     {
       "titel": "834. Montagsdemo gegen Stuttgart 21",
@@ -187,7 +173,7 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-12-07-8"
+      "id": "Montagsdemo (Parkschützer)-2026-12-07-7"
     },
     {
       "titel": "835. Montagsdemo gegen Stuttgart 21",
@@ -201,7 +187,21 @@
       "quelle": "Montagsdemo (Parkschützer)",
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-12-14-9"
+      "id": "Montagsdemo (Parkschützer)-2026-12-14-8"
+    },
+    {
+      "titel": "836. Montagsdemo gegen Stuttgart 21",
+      "datum": "2026-12-21",
+      "zeit": "18:00",
+      "endeZeit": null,
+      "ort": "Schlossplatz, Stuttgart",
+      "beschreibung": "Wöchentliche Kundgebung der Parkschützer:innen (seit 2010).",
+      "url": "https://www.bei-abriss-aufstand.de/",
+      "kategorien": [],
+      "quelle": "Montagsdemo (Parkschützer)",
+      "spektrum": "Stuttgart 21",
+      "weitereQuellen": [],
+      "id": "Montagsdemo (Parkschützer)-2026-12-21-9"
     }
   ]
 }
