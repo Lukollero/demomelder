@@ -1,29 +1,29 @@
 {
-  "generatedAt": "2026-11-09T12:53:44.319Z",
-  "heute": "2026-11-09",
+  "generatedAt": "2026-11-09T23:25:56.340Z",
+  "heute": "2026-11-10",
   "quellen": [
     {
       "key": "eintopf",
       "name": "eintopf.info",
       "ok": true,
-      "count": 1,
-      "ms": 3362,
+      "count": 2,
+      "ms": 3361,
       "error": null
     },
     {
       "key": "friedenskoop",
       "name": "Friedenskooperative",
-      "ok": true,
+      "ok": false,
       "count": 0,
-      "ms": 2076,
-      "error": null
+      "ms": 24193,
+      "error": "fetch failed (redirect count exceeded)"
     },
     {
       "key": "demokrateam",
       "name": "DemokraTEAM",
       "ok": true,
       "count": 0,
-      "ms": 510,
+      "ms": 528,
       "error": null
     },
     {
@@ -31,7 +31,7 @@
       "name": "PRÜF (demokrateam)",
       "ok": true,
       "count": 1,
-      "ms": 213,
+      "ms": 1561,
       "error": null
     },
     {
@@ -39,7 +39,7 @@
       "name": "Fridays for Future",
       "ok": true,
       "count": 1,
-      "ms": 1018,
+      "ms": 3366,
       "error": null
     },
     {
@@ -47,7 +47,7 @@
       "name": "Montagsdemo (Parkschützer)",
       "ok": true,
       "count": 8,
-      "ms": 1737,
+      "ms": 1263,
       "error": null
     },
     {
@@ -59,22 +59,8 @@
       "error": null
     }
   ],
-  "anzahl": 11,
+  "anzahl": 12,
   "demos": [
-    {
-      "titel": "830. Montagsdemo gegen Stuttgart 21",
-      "datum": "2026-11-09",
-      "zeit": "18:00",
-      "endeZeit": null,
-      "ort": "Schlossplatz, Stuttgart",
-      "beschreibung": "Wöchentliche Kundgebung der Parkschützer:innen (seit 2010).",
-      "url": "https://www.bei-abriss-aufstand.de/",
-      "kategorien": [],
-      "quelle": "Montagsdemo (Parkschützer)",
-      "spektrum": "Stuttgart 21",
-      "weitereQuellen": [],
-      "id": "Montagsdemo (Parkschützer)-2026-11-09-0"
-    },
     {
       "titel": "Klimastreik (Fridays for Future)",
       "datum": "2026-11-13",
@@ -87,7 +73,23 @@
       "quelle": "Fridays for Future",
       "spektrum": "links / zivilgesellschaftlich",
       "weitereQuellen": [],
-      "id": "Fridays for Future-2026-11-13-1"
+      "id": "Fridays for Future-2026-11-13-0"
+    },
+    {
+      "titel": "PRÜF! Demo BaWü November | PRÜF HEUTE — SCHÜTZ MORGEN!",
+      "datum": "2026-11-14",
+      "zeit": "14:00",
+      "endeZeit": "15:00",
+      "ort": "Schlossplatz (!)",
+      "beschreibung": "PRÜF! Demo Stuttgart\n\nImmer am zweiten Samstag im Monat wird bundesweit in fast allen Landeshauptstädten demonstriert. \nWir fordern von der Landesregierung: \nSetzen Sie sich im Bundesrat dafür ein, alle als rechtsextremer Verdachtsfall ode…",
+      "url": "https://eintopf.info/event/c1b1f6e4-ffb8-4aed-8eb0-68d02fc2fb56",
+      "kategorien": [
+        "Antifaschismus"
+      ],
+      "quelle": "eintopf.info",
+      "spektrum": "links / zivilgesellschaftlich",
+      "weitereQuellen": [],
+      "id": "eintopf.info-2026-11-14-1"
     },
     {
       "titel": "PRÜF Baden-Württemberg",
@@ -216,6 +218,20 @@
       "spektrum": "Stuttgart 21",
       "weitereQuellen": [],
       "id": "Montagsdemo (Parkschützer)-2026-12-28-10"
+    },
+    {
+      "titel": "838. Montagsdemo gegen Stuttgart 21",
+      "datum": "2027-01-04",
+      "zeit": "18:00",
+      "endeZeit": null,
+      "ort": "Schlossplatz, Stuttgart",
+      "beschreibung": "Wöchentliche Kundgebung der Parkschützer:innen (seit 2010).",
+      "url": "https://www.bei-abriss-aufstand.de/",
+      "kategorien": [],
+      "quelle": "Montagsdemo (Parkschützer)",
+      "spektrum": "Stuttgart 21",
+      "weitereQuellen": [],
+      "id": "Montagsdemo (Parkschützer)-2027-01-04-11"
     }
   ]
 }
