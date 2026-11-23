@@ -1,29 +1,29 @@
 {
-  "generatedAt": "2026-11-22T20:43:13.898Z",
-  "heute": "2026-11-22",
+  "generatedAt": "2026-11-23T14:40:43.298Z",
+  "heute": "2026-11-23",
   "quellen": [
     {
       "key": "eintopf",
       "name": "eintopf.info",
       "ok": true,
       "count": 2,
-      "ms": 3900,
+      "ms": 3315,
       "error": null
     },
     {
       "key": "friedenskoop",
       "name": "Friedenskooperative",
-      "ok": false,
+      "ok": true,
       "count": 0,
-      "ms": 18783,
-      "error": "fetch failed (redirect count exceeded)"
+      "ms": 1589,
+      "error": null
     },
     {
       "key": "demokrateam",
       "name": "DemokraTEAM",
       "ok": true,
       "count": 0,
-      "ms": 8221,
+      "ms": 413,
       "error": null
     },
     {
@@ -31,7 +31,7 @@
       "name": "PRÜF (demokrateam)",
       "ok": true,
       "count": 1,
-      "ms": 178,
+      "ms": 314,
       "error": null
     },
     {
@@ -39,7 +39,7 @@
       "name": "Fridays for Future",
       "ok": true,
       "count": 0,
-      "ms": 1662,
+      "ms": 938,
       "error": null
     },
     {
@@ -47,7 +47,7 @@
       "name": "Montagsdemo (Parkschützer)",
       "ok": true,
       "count": 8,
-      "ms": 1243,
+      "ms": 1540,
       "error": null
     },
     {
